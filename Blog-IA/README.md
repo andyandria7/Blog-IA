@@ -1,2 +1,0 @@
-# Blog-IA
-laravel blog

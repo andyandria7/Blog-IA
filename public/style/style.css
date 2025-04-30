@@ -1,0 +1,386 @@
+.burger {
+  position: relative;
+  width: 40px;
+  height: 30px;
+  background: transparent;
+  cursor: pointer;
+  display: block;
+}
+
+.burger input {
+  display: none;
+}
+
+.burger span {
+  display: block;
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background: black;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+.burger span:nth-of-type(1) {
+  top: 0px;
+  transform-origin: left center;
+}
+
+.burger span:nth-of-type(2) {
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: left center;
+}
+
+.burger span:nth-of-type(3) {
+  top: 100%;
+  transform-origin: left center;
+  transform: translateY(-100%);
+}
+
+.burger input:checked~span:nth-of-type(1) {
+  transform: rotate(45deg);
+  top: 0px;
+  left: 5px;
+}
+
+.burger input:checked~span:nth-of-type(2) {
+  width: 0%;
+  opacity: 0;
+}
+
+.burger input:checked~span:nth-of-type(3) {
+  transform: rotate(-45deg);
+  top: 28px;
+  left: 5px;
+}
+
+/* mode darck */
+:root {
+  &:has(.theme [value='dark']:checked) {
+    --background: #222222;
+    --color: #fff;
+    --line-color: hotpink;
+  }
+
+  &:has(.theme [value='light']:checked) {
+    --background: #fff;
+    --color: #000;
+    --line-color: darkgoldenrod;
+    --button-background: #0001;
+  }
+
+  &:has(.theme [value='color']:checked) {
+    --background: linear-gradient(60deg, maroon, darkblue);
+    --color: #aff;
+    --line-color: #f55;
+    --content-background: #0004;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.btn {
+  background-color: var(--button-background, #fff3);
+  color: var(--color);
+  border: 2px solid white;
+}
+
+body {
+  background: var(--background);
+  color: var(--color);
+  min-height: 100vh;
+  overflow-x: hidden;
+  
+}
+
+.color {
+  background: var(--color) !important;
+
+}
+
+/* select{
+    font:inherit;
+    position: fixed;
+    left: 1em;
+    top: 1em;
+    padding: 1em;
+  } */
+.content {
+  background: var(--content-background, #fff3);
+}
+
+.h1 {
+  text-decoration: underline;
+  text-decoration-color: var(--line-color, currentcolor);
+}
+
+
+.text {
+  /* background: var(--content-background, #fff3); */
+  color: var(--color);
+}
+
+.too {
+  background: var(--content-background, rgb(0, 0, 0));
+  color: white;
+}
+
+/* slider */
+input:checked+label {
+  width: 600px;
+}
+
+input:checked+label .flex-col {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+label[for="c1"] {
+  background-image: url('../images/CHATGPT\ ethique_0.jpeg');
+  background-color: #22222292;
+  background-blend-mode: multiply;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+label[for="c2"] {
+  background-image: url('../images/Bard-AI-Logo-768x432.png');
+  background-color: #22222292;
+  background-blend-mode: multiply;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+label[for="c3"] {
+  background-image: url('../images/748d1fef40279cc41f03502d3740939a.jpg');
+  background-color: #22222292;
+  background-blend-mode: multiply;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+label[for="c4"] {
+  background-image: url('../images/OMB-BLOG-MAIN-HERO-16x9-1-960x640-1.jpg');
+  background-color: #22222292;
+  background-blend-mode: multiply;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.img1 {
+  background-color: #22222292;
+  background-blend-mode: multiply;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.animation1 {
+  opacity: 0;
+  animation: fade-up 3s 0.5s forwards;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* animation texte */
+
+.texteAnimation {
+  overflow: hidden;
+  white-space: nowrap;
+  /* margin: 0 auto; */
+  animation:
+    typing 3.5s steps(30, end),
+    blink-caret .5s step-end infinite !important;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0
+  }
+
+  to {
+    width: 100%
+  }
+}
+
+
+/* The typewriter cursor effect */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+}
+
+/* animation   */
+
+.animation-show {
+  transform: translateY(50px);
+  opacity: 0;
+  transition: 0.7s;
+  overflow-y: hidden;
+
+}
+
+.active .animation-show {
+  overflow-y: hidden;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.animation-show:nth-child(2) {
+  transition-delay: 0.3s;
+}
+
+.animation-show:nth-child(3) {
+  transition-delay: 0.6s;
+}
+
+.animation-show:nth-child(4) {
+  transition-delay: 0.9s;
+}
+
+.animation-show:nth-child(5) {
+  transition-delay: 1.2s;
+}
+
+.animation-show:nth-child(6) {
+  transition-delay: 1.5s;
+}
+
+/* card */
+.card-container {
+  transition: all 0.3s ease-in-out;
+}
+
+.card-image {
+  max-height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-container:hover .card-title {
+  text-decoration: underline;
+}
+
+.video-background {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+
+.video-overlay {
+  position: relative;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Optional: to make content more readable */
+  padding: 20px;
+  border-radius: 15px;
+}
+
+/* up */
+.up {
+  transform: translateX(93vh);
+  animation: up 2s forwards;
+  animation: name duration timing-function delay iteration-count direction fill-mode;
+}
+
+@keyframes up {
+  from {
+    transform: translateX(93vh);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(25vh);
+    opacity: 1;
+  }
+}
+
+.lft{
+  transform: translateX(-15vh);
+  animation: lft 500ms forwards;
+  animation: name duration timing-function delay iteration-count direction fill-mode;
+}
+
+@keyframes lft {
+  from{
+   transform: translateX(-93vh);
+    opacity: 0;
+  }
+  to{
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.rht{
+  transform: translateX(195px);
+  opacity: 0;
+  animation: rht 1.5s 0.5s forwards;
+}
+
+@keyframes rht {
+  from{
+   transform: translateX(193vh);
+    opacity: 0;
+  }
+  to{
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.rht1{
+  transform: translateX(102px);
+  opacity: 0;
+  animation: rht1 1.5s 1s forwards;
+}
+
+@keyframes rht1 { 
+  from{
+   transform: translateX(102vh);
+    opacity: 0;
+  }
+  to{
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
